@@ -49,6 +49,6 @@ const pacienteSchema = new Schema({
   ],
 });
 
-const Paciente = model("producto", pacienteSchema);
+const Paciente = model("paciente", pacienteSchema);
 
 export default Paciente;
