@@ -4,6 +4,7 @@ import morgan from "morgan";
 import path from "path";
 import "dotenv/config";
 import "./src/database/dbConnection";
+import pacientesRouter from "./src/routes/pacientes.routes";
 
 // Puerto
 
@@ -22,3 +23,4 @@ console.log(__dirname);
 app.use(express.static(path.join(__dirname, "/public")));
 
 // Rutas
+app.use("/api-rollingvet", pacientesRouter);
