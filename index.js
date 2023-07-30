@@ -6,6 +6,7 @@ import "dotenv/config";
 import "./src/database/dbConnection";
 import pacientesRouter from "./src/routes/pacientes.routes";
 import veterinariosRouter from "./src/routes/veterinarios.routes";
+import turnosRouter from "./src/routes/turnos.routes";
 
 // Puerto
 
@@ -26,3 +27,4 @@ app.use(express.static(path.join(__dirname, "/public")));
 // Rutas
 app.use("/api-rollingvet", pacientesRouter);
 app.use("/api-rollingvet", veterinariosRouter);
+app.use("/api-rollingvet", turnosRouter);

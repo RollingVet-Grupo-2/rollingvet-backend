@@ -34,7 +34,9 @@ const validarPaciente = [
     .notEmpty()
     .withMessage("La direccion es un dato obligatorio")
     .isLength({ min: 3, max: 30 })
-    .withMessage("El telefono debe tener unicamente 10 digitos.")
+    .withMessage(
+      "La direccion debe tener debe tener entre 3 y 30 caracteres como maximo."
+    )
     .trim(),
   body("mascotas")
     .isArray({ min: 1 })
