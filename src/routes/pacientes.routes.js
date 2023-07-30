@@ -6,14 +6,18 @@ import {
   borrarPaciente,
   editarPaciente,
 } from "../controllers/pacientes.controllers";
+import validarPaciente from "../helpers/validacionPaciente";
 
 const router = Router();
 
-router.route("/pacientes").get(obtenerPacientes).post(crearPaciente);
+router
+  .route("/pacientes")
+  .get(obtenerPacientes)
+  .post(validarPaciente, crearPaciente);
 router
   .route("/pacientes/:id")
   .get(obtenerPacientePorId)
   .delete(borrarPaciente)
-  .put(editarPaciente);
+  .put(validarPaciente, editarPaciente);
 
 export default router;
