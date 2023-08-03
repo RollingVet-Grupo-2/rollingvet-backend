@@ -1,8 +1,9 @@
+import Paciente from "../models/paciente";
 import Turno from "../models/turno";
 
 export const obtenerTurnos = async (req, res) => {
   try {
-    const turnos = await Turno.find();
+    const turnos = await Turno.find().populate("paciente");
     res.status(200).json(turnos);
   } catch (error) {
     console.log(error);
@@ -14,7 +15,9 @@ export const obtenerTurnos = async (req, res) => {
 
 export const crearTurno = async (req, res) => {
   try {
+    const paciente = await Paciente.findById(req.body.paciente);
     const turnoNuevo = new Turno(req.body);
+    turnoNuevo.paciente = paciente;
     await turnoNuevo.save();
     res.status(201).json({
       mensaje: "El turno se creo correctamente",

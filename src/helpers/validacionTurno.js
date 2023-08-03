@@ -10,12 +10,9 @@ const validarTurno = [
       "El veterinario debe tener entre 3 y 30 caracteres como maximo"
     )
     .trim(),
-  check("mascota")
+  check("paciente")
     .notEmpty()
-    .withMessage("La mascota es un dato obligatorio")
-    .isLength({ min: 3, max: 30 })
-    .withMessage("La mascota debe tener entre 3 y 30 caracteres como maximo")
-    .trim(),
+    .withMessage("El paciente es un dato obligatorio"),
   check("detalle_cita")
     .notEmpty()
     .withMessage("El detalle de cita es un dato obligatorio")

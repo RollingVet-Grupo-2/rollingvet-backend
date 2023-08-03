@@ -7,12 +7,7 @@ const turnoSchema = new Schema({
     maxLength: 30,
     required: true,
   },
-  mascota: {
-    type: String,
-    minLength: 3,
-    maxLength: 30,
-    required: true,
-  },
+  paciente: {type: Schema.Types.ObjectId, ref: "paciente"},
   detalle_cita: {
     type: String,
     required: true,

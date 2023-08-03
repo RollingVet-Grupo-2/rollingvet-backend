@@ -38,31 +38,24 @@ const validarPaciente = [
       "La direccion debe tener debe tener entre 3 y 30 caracteres como maximo."
     )
     .trim(),
-  body("mascotas")
-    .isArray({ min: 1 })
-    .withMessage("Debe haber al menos una mascota registrada"),
-
-  body("mascotas.*.nombre")
+  check("nombreMascota")
     .notEmpty()
     .withMessage("El nombre de la mascota es un dato obligatorio")
     .isLength({ min: 3, max: 30 })
     .withMessage(
       "El nombre de la mascota debe tener entre 3 y 30 caracteres como máximo"
     ),
-
-  body("mascotas.*.edad")
+  check("edadMascota")
     .notEmpty()
     .withMessage("La edad de la mascota es un dato obligatorio"),
-
-  body("mascotas.*.especie")
+  check("especie")
     .notEmpty()
     .withMessage("La especie de la mascota es un dato obligatorio")
     .isLength({ min: 3, max: 30 })
     .withMessage(
       "La especie de la mascota debe tener entre 3 y 30 caracteres como máximo"
     ),
-
-  body("mascotas.*.raza")
+  check("raza")
     .notEmpty()
     .withMessage("La raza de la mascota es un dato obligatorio")
     .isLength({ min: 3, max: 30 })
