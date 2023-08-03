@@ -1,4 +1,5 @@
 import Paciente from "../models/paciente";
+import Turno from "../models/turno";
 
 export const obtenerPacientes = async (req, res) => {
   try {
@@ -42,6 +43,12 @@ export const obtenerPacientePorId = async (req, res) => {
 export const borrarPaciente = async (req, res) => {
   try {
     await Paciente.findByIdAndDelete(req.params.id);
+    const turnosAsociados = await Turno.find({ paciente: req.params.id });
+    if (turnosAsociados.length > 0) {
+      turnosAsociados.map(
+        async (turno) => await Turno.findByIdAndDelete(turno._id)
+      );
+    }
     res.status(200).json({
       mensaje: "El paciente fue eliminado correctamente",
     });
