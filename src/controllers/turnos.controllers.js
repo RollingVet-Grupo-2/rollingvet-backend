@@ -32,7 +32,7 @@ export const crearTurno = async (req, res) => {
 
 export const obtenerTurnoPorId = async (req, res) => {
   try {
-    const turno = await Turno.findById(req.params.id);
+    const turno = await Turno.findById(req.params.id).populate("paciente");
     res.status(200).json(turno);
   } catch (error) {
     console.log(error);
